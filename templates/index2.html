@@ -1,0 +1,30 @@
+<!-- templates/index2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            {% if user_input %}
+            <div class="message user-message">{{ user_input }}</div>
+            <div class="message bot-message">
+                <span id="bot-text">{{ bot_response }}</span>
+                <span class="typing-dots" id="typing-dots"></span>
+            </div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <form method="POST" action="/process">
+                <input type="text" id="messageText" name="messageText" placeholder="Type your message..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
